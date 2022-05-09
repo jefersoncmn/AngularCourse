@@ -9,7 +9,7 @@ import { Client } from '../client.model';
 export class ItemClientComponent implements OnInit {
 
   @Input() client: Client;
-  @Output() updateClient = new EventEmitter<Client>();
+  @Output() updateClient = new EventEmitter<Client>(); //Evento para mandar informação pro componente pai
   @Output() removeClient = new EventEmitter<any>();
 
   onEdit: boolean = false;

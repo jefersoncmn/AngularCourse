@@ -4,8 +4,8 @@
 
 
 <h1>My Clients</h1>
-<div  *ngFor="let c of clients">
-  <app-client [client]="c" >
+<div  *ngFor="let c of clients"> <!-- Vai rolar um for da lista de clientes -->
+  <app-client [client]="c" > <!-- A partir do loop, vai preenchendo com os dados de cliente cada componente filho -->
   </app-client>
   <hr>
 </div>

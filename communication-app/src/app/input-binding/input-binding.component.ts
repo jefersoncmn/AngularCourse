@@ -8,7 +8,7 @@ import { Client } from './client.model';
 })
 export class InputBindingComponent implements OnInit {
 
-  @Input('firstName') name: string;
+  @Input('firstName') name: string;//Input permite que dados sejam inseridos pelo html do componente pai (componente que contém esse componente). Nesse caso o parametrô é o nome.
   @Input() lastName: string;
   @Input() age: number;
 

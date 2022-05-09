@@ -12,11 +12,13 @@ export class CheckComponent implements OnInit {
   private name: string = "";
   private age: number = 0;
 
+  //Não tem acesso aos inputs
   constructor() { 
     console.log("constructor");
 
   }
 
+  //Iniciado após a criação (tem acesso aos Input do componente)
   ngOnInit() {
     console.log("ngOnInit");
   }
@@ -25,6 +27,7 @@ export class CheckComponent implements OnInit {
     console.log("ngOnChanges");
   }
 
+  //Chamado após mudança no componente, por interação com usuário ou carregamentos.
   ngDoCheck() {
     console.log("ngDoCheck");
   }
@@ -33,6 +36,7 @@ export class CheckComponent implements OnInit {
     console.log("ngAfterContentInit");
   }
 
+  //Chamado após ter alteração do HTML de entrada, por meio de NgContent.
   ngAfterContentChecked() {
     console.log("ngAfterContentChecked");
   }
@@ -41,6 +45,7 @@ export class CheckComponent implements OnInit {
     console.log("ngAfterViewInit");
   }
 
+  //Chamado após checkar os objetos filhos.
   ngAfterViewChecked() {
     console.log("ngAfterViewChecked");
   }

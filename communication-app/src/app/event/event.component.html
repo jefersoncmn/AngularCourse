@@ -4,7 +4,7 @@
       <h3>Value: {{value}}</h3>
       <app-child-item
         [title]="title"
-        (inc)="incBy( $event )">
+        (inc)="incBy( $event )">  <!-- Ao chamada do evento do componente filho, chamará a função "incBy" desse componente, já trazendo os dados -->
       </app-child-item>
     </section>
   </mat-card-content>

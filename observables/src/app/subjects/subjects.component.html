@@ -1,0 +1,12 @@
+<h3>Subjects</h3>
+<button (click)="connect()">Connect</button>
+
+<br><br>
+<hr>
+
+<div style="height: 100%; width: 100%; display: flex;">
+  <app-subject-child name="Subject" [subject]="subject"></app-subject-child>
+  <app-subject-child name="Replay Subject" [subject]="replaySubject"></app-subject-child>
+  <app-subject-child name="Async Subject" [subject]="asyncSubject"></app-subject-child>
+  <app-subject-child name="Behavior Subject" [subject]="behaviorSubject"></app-subject-child>
+</div>

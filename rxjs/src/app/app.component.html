@@ -1,0 +1,25 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" fxFill>
+  <div fxFlex="20">
+    <mat-radio-group [(ngModel)]="option" fxLayout="column" fxLayoutAlign="center start">
+      <mat-radio-button value="basic-creation">Basic Creation</mat-radio-button>
+      <mat-radio-button value="operators">Operators</mat-radio-button>
+      <mat-radio-button value="async">Templates / Async</mat-radio-button>
+      <mat-radio-button value="error-handling">Error Handling</mat-radio-button>
+      <mat-radio-button value="dragandrop">Drag and Drop</mat-radio-button>
+      <mat-radio-button value="unsubscribe">Unsubscribe</mat-radio-button>
+      <mat-radio-button value="switch-merge">Switch / Merge</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div fxFlex="70" fxLayout="column" fxLayoutAlign="start start" fxFill>
+    <ng-container [ngSwitch]="option">
+      <app-basic-creation *ngSwitchCase="'basic-creation'" fxFill></app-basic-creation>
+      <app-operators *ngSwitchCase="'operators'" fxFill></app-operators>
+      <app-async *ngSwitchCase="'async'" fxFill></app-async>
+      <app-error-handling *ngSwitchCase="'error-handling'" fxFill></app-error-handling>
+      <app-drag-and-drop *ngSwitchCase="'dragandrop'" fxFill></app-drag-and-drop>
+      <app-unsubscribe *ngSwitchCase="'unsubscribe'" fxFill></app-unsubscribe>
+      <app-switch-merge *ngSwitchCase="'switch-merge'" fxFill></app-switch-merge>
+    </ng-container>
+
+  </div>
+</div>

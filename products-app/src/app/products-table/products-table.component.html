@@ -1,9 +1,9 @@
 <div fxLayout="row" fxLayoutAlign="space-around stretch" >
-  <table fxFlex mat-table [dataSource]="products" >
+  <table fxFlex mat-table [dataSource]="products" > <!-- "dataSouce" recebe a lista dos produtos que irá criando os containers -->
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let p"> {{p.id}} </td>
+      <td mat-cell *matCellDef="let p"> {{p.id}} </td> <!-- Cada um desses containers irá mostrar uma parte dos dados do produto -->
     </ng-container>
     <ng-container matColumnDef="prodname">
       <th mat-header-cell *matHeaderCellDef> Product Name </th>
@@ -22,7 +22,7 @@
       <td mat-cell *matCellDef="let p"> {{p.department.name}} </td>
     </ng-container>    
 
-    <tr mat-header-row *matHeaderRowDef="prodColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="prodColumns"></tr> <!-- Define oque será apresentado para o usuario -->
     <tr mat-row *matRowDef="let row; columns: prodColumns"></tr>
 
   </table>

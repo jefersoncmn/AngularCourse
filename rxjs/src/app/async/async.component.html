@@ -1,0 +1,31 @@
+<div fxFill fxLayout="column" fxLayoutAlign="center start">
+  <mat-card>
+    <mat-card-title>Select the options bellow</mat-card-title>
+    <mat-card-content>
+      <mat-selection-list>
+        <mat-list-option *ngFor="let o of options$ | async">{{o}}</mat-list-option>
+      </mat-selection-list>
+    </mat-card-content>
+    <mat-card-actions>
+<!--
+        <div *ngIf="user$|async; else loadinguser1">
+          <p>Name: {{(user$|async)?.name}}</p>
+          <p>Login: {{(user$|async)?.login}}</p>
+        </div>
+        <ng-template #loadinguser1>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </ng-template>
+-->      
+        <div *ngIf="user$|async as user; else loadinguser2">
+          <p>Name: {{user.name}}</p>
+          <p>Login: {{user.login}}</p>
+        </div>
+        <ng-template #loadinguser2>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </ng-template>
+
+      </mat-card-actions>
+
+  </mat-card>
+
+</div>

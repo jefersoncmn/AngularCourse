@@ -10,7 +10,7 @@ import { MatTable } from '@angular/material';
 })
 export class ProductsTableComponent implements OnInit {
 
-  @ViewChild(MatTable) datatable: MatTable<any>;
+  @ViewChild(MatTable) datatable: MatTable<any>;//Referencia do datatable
 
   products: Product[];
 
@@ -19,10 +19,10 @@ export class ProductsTableComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    this.products = this.productService.getProducts(); //Pega os produtos do service
     this .productService.onNewProduct
-      .subscribe((p) => {
-        this.datatable.renderRows();
+      .subscribe((p) => {   //Se subscreve no evento do product service, para ficar ouvindo. Ele retorna o "p"
+        this.datatable.renderRows();//Função a API do datatable, que ele renderiza a tabela novamente. Pra obter o item novo adicionado na tabela.
       });
   }
 

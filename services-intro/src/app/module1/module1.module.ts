@@ -10,6 +10,6 @@ import { Service1 } from './service1.service';
   imports: [
     CommonModule
   ],
-  providers: [ Service1 ],
+  providers: [ Service1 ], //Possibilita de todos os componentes acessarem o serviço
 })
 export class Module1Module { }

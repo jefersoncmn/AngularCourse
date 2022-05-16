@@ -21,7 +21,7 @@ export class DepartmentService {
   }
 
   addDeparment(d: Department) {
-    this.departments.push({...d, id: this.nextID++});
+    this.departments.push({...d, id: this.nextID++});//Mescla os dados do item a ser inserido na lista com a variável id
     console.log(this.departments);
   }
 

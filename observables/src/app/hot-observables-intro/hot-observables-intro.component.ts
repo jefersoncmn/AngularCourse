@@ -8,7 +8,7 @@ import { Observable, fromEvent, Observer } from 'rxjs';
 })
 export class HotObservablesIntroComponent implements OnInit {
 
-  @ViewChild('myButton') button: ElementRef;
+  @ViewChild('myButton') button: ElementRef; //Pega a referencia do elemento no componente
 
   n1: number = 0;
   n2: number = 0;
@@ -18,7 +18,7 @@ export class HotObservablesIntroComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let myBtnClickObservable: Observable<any> = fromEvent(
+    let myBtnClickObservable: Observable<any> = fromEvent( //"FromEvent" permite receber evento do elemento html que faz parte do componente
       this.button.nativeElement, 'click');
     myBtnClickObservable.subscribe( (event) => console.log('button clicked 1'));
     myBtnClickObservable.subscribe( (event) => console.log('button clicked 2'));
@@ -58,7 +58,7 @@ export class HotObservablesIntroComponent implements OnInit {
 
     const myHotObservable = new Observable(
       (observer: Observer<number>)=> {
-        producer.addListener( (n) => observer.next(n))
+        producer.addListener( (n) => observer.next(n)) //Ao registrar a função dentro do producer, será enviado desse observer as mudanças que acontecem no producer.
       }
     );
     myHotObservable.subscribe((n) => console.log('From Subscriber 1', n));

@@ -17,7 +17,7 @@ export class DepartmentFormComponent implements OnInit {
   }
 
   save(){
-    this.departmentService.addDeparment({ name: this.depName });
+    this.departmentService.addDeparment({ name: this.depName });//Usando o função do service
     this.clear();
   }
 

@@ -38,7 +38,9 @@ export class HotObservablesComponent implements OnInit {
 
 
   usingShare() {
-    const multicasted = this.myObservable.pipe(share());
+    //Nesse caso o myObservable só começará a partir do primeiro subscribe feito
+    //Nesse caso, se o myObservable dar complete, ao criar um novo subscribe, será possivel reiniciar o myObservable
+    const multicasted = this.myObservable.pipe(share());//É a mesma coisas do 
 
     //Subscriber 1
     this.s1 = 'waiting for interval...';
@@ -59,12 +61,17 @@ export class HotObservablesComponent implements OnInit {
     },4000);    
   }  
 
+
   usingPublish() {
+    //Pipe aplica tratamento nos dados que tão entrando
+    //Nesse caso o myObservable só começará a partir do primeiro subscribe feito
+    //Nesse caso com o "refCount()" O multicasted irá criar um subject e ira ligar com o myObservable, porém nesse caso ele funciona normal, mas quando o observable dar complete, se chamar novamente não ira criar um novo observable que recomeçara a emitir os dados. Diferente do Share.
     //const multicasted = this.myObservable.pipe(publish(), refCount());
 
+    //Nesse segmento é criado um ConnectableObservable que ira se increver no myObservable
     const multicasted: ConnectableObservable<number> = this.myObservable
       .pipe(publish()) as ConnectableObservable<number>;
-    multicasted.connect();
+    multicasted.connect();//Nesse momento que e o myObservable começará a emitir os dados. Assim poderá ter o controle de quando começaremos a ouvir as informações.
 
     //Subscriber 1
     this.s1 = 'waiting for interval...';
@@ -85,9 +92,11 @@ export class HotObservablesComponent implements OnInit {
     },4000);    
   }
 
+  //Nesse segmento é feito um subject que vira um observable de um observable, criando anteriormente.
+  //Ele permite criar vários Subscribers observando esse primeir observable, sem recria-lo
   usingSubjects() {
     const subject = new Subject<number>();
-    this.myObservable.subscribe(subject);
+    this.myObservable.subscribe(subject);//O myObservable é criado nesse momento. A partir desse ponto o Subject poderá ter vários subscribes que irão observar esse mesmo myObservable. Isso permite várias coisas olharem a mesma instância, com ela já tendo sido criada em outro momento.
 
     //Subscriber 1
     this.s1 = 'waiting for interval...';

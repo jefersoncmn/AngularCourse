@@ -7,6 +7,7 @@ import { DepartmentService } from './department.service';
 })
 export class ProductService {
 
+  //Exemplo de dados pegos do backend
   private dataFromServer: any[] = [
     {id: 1, name: "Laptop", department_id: 4, price: 40, description: 'Laptop Description'},
     {id: 2, name: "Shirt", department_id: 1, price: 10, description: 'Shirt Description'},
@@ -21,7 +22,7 @@ export class ProductService {
 
   constructor(private departmentService: DepartmentService) 
   { 
-    for(let p of this.dataFromServer) {
+    for(let p of this.dataFromServer) { //adiciona todo os dados ficticios dentro da lista products
       this.products.push({
         id: p.id,
         name: p.name,
@@ -37,11 +38,12 @@ export class ProductService {
     return this.products;
   }
 
+//Funções destinadas para interface. Que poderão ser usadas para interagir com os dados desta classe service
   addProduct(p: Product) {
     let prod: Product = {id: this.nextID++, ...p};
     this.products.push(prod);
     console.log(this.products);
-    this.onNewProduct.emit(prod)
+    this.onNewProduct.emit(prod)//Chama o evento de criação de novo evento. Para atualizar a interface
   }
 
 }

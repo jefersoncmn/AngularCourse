@@ -8,7 +8,9 @@ import { publish } from 'rxjs/operators';
 })
 export class GenRandomDataService {
   public dataObservable: ConnectableObservable<DataModel>;
+
   constructor() { 
+    //Gera o novo observável
     this.dataObservable = new Observable(
       (observer: Observer<DataModel>) => {
         let n = 0;
@@ -19,12 +21,12 @@ export class GenRandomDataService {
           if (n<=10) {
             let timestamp = Math.round(Math.random()*2000 + 500);
             observer.next({timestamp: timestamp, data: n});
-            setTimeout(f, timestamp);
+            setTimeout(f, timestamp);//Chamará a função f depois do intervalo do timestamp
           }
           else
             observer.complete();
         }
-        f();
+        f();//O observável irá rodar a função criada
       }
     ).pipe(publish()) as ConnectableObservable<DataModel>;
   }

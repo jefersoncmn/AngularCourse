@@ -18,6 +18,8 @@ Projeto de aplicação web feito com Angular
 
 No projeto será estudado:
 - Angular
+- NodeJS
+- Mongodb
 
 ### Pré-requisitos
 

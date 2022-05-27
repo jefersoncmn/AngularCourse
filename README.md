@@ -1,5 +1,5 @@
 <h1 align="center">Angular Course</h1>
-<p align="center">myapp</p>
+
 
 Tabela de conteúdos
 =================
@@ -12,7 +12,7 @@ Tabela de conteúdos
 
 ### Sobre
 
-Projeto de aplicação web feito com Angular
+Repositório de aplicações web feitas durante o estudo do Angular.
 
 ### Estudo
 

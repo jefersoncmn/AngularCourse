@@ -20,9 +20,9 @@ export class OperatorsComponent implements OnInit {
   }
 
   mapClick() {
-    from([1,2,3,4,5,6,7])
-    .pipe(
-      map(i=>i*2),
+    from([1,2,3,4,5,6,7]) //Observador que envia esses dados em sequência (como um stream)
+    .pipe(//Cada item passado poderá ser alterado
+      map(i=>i*2), //Altera o dado do fluxo
       map(i=>i*10),
       delay(2000)
     )
@@ -30,11 +30,12 @@ export class OperatorsComponent implements OnInit {
 
     fromEvent(document, 'click')
       .pipe(
-        map((e: MouseEvent) => ({x: e.screenX, y: e.screenY}))
+        map((e: MouseEvent) => ({x: e.screenX, y: e.screenY}))//Só retorna os dados pedidos
       )
-      .subscribe((pos) => console.log(pos));
+      .subscribe((pos) => console.log(pos)); //Sempre precisa fazer o subscribe
   }
 
+  //Filter = Faz a filtragem do dado de saída
   filterClick() {
     from([1,2,3,4,5,6,7])
     .pipe(
@@ -100,11 +101,12 @@ export class OperatorsComponent implements OnInit {
     rippleRef.fadeOut();
   }
 
+  //Cria o evento pra dar efeito no botão
   debounceTimeClick() {
     fromEvent(document, 'click')
     .pipe(
       tap((e)=> console.log('Click')),
-      debounceTime(1000)
+      debounceTime(1000)//Todos os valores entre o intervalo emitido, serão ignorados. Ou seja. ele pega o click e só depois de 1 seg ele vai gerar o dado.
     )
     .subscribe(
       (e: MouseEvent) => {
@@ -120,13 +122,13 @@ export class OperatorsComponent implements OnInit {
 
   debounceTimeSearch() {
     this.searchEntry$
-      .pipe(debounceTime(500))
-      .subscribe((s)=> console.log(s))
+      .pipe(debounceTime(500)) //Ignorará entrada de dados a cada meio segundo
+      .subscribe((s)=> console.log(s)) //Depois dará o print com oq tiver
   }
 
   takeWhileClick() {
     interval(500)
-    .pipe( takeWhile((value,index) => (value<5)) )
+    .pipe( takeWhile((value,index) => (value<5)) )//Pega o retorno do observer, enquanto for menor que 5. Se for maior ele dará complete.
     .subscribe(
       (i) => console.log('takeWhile: ', i),
       (error) => console.error(error),
@@ -138,7 +140,7 @@ export class OperatorsComponent implements OnInit {
     let duetime$ = timer(5000);
 
     interval(500)
-    .pipe( takeUntil(duetime$) )
+    .pipe( takeUntil(duetime$) )//Ele vai pegar o retorno do observer, até o momento que o observer do "duetime" mandar o primeiro retorno, aí ele irá parar. 
     .subscribe(
       (i) => console.log('takeWhile: ', i),
       (error) => console.error(error),

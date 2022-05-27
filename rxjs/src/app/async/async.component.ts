@@ -35,6 +35,7 @@ export class AsyncComponent implements OnInit {
     );
     //this.options$.subscribe(s=>console.log(s));
 
+    //Observer que retorna 4 nomes e logins a cada 3 segundos
     this.user$ = new Observable<User>((observer) => {
       let names  = ["Mr. James", "Mr. John", "Mr. Ray", "Ms. Angel"];
       let logins = ["james", "john", "ray", "angel"];

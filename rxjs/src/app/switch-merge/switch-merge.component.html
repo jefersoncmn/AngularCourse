@@ -10,7 +10,7 @@
   </div>
   <div>
     <mat-list>
-      <mat-list-item *ngFor="let p of people$ | async ">
+      <mat-list-item *ngFor="let p of people$ | async "> <!-- Async pra lidar com o Observable people$ -->
         <h3 matLine>{{p.lastname}}, {{p.firstname}}</h3>
         <p matLine>{{p.email}}</p>
         <p matLine>City: {{p.city}}</p>

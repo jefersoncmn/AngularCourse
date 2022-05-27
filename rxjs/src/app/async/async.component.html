@@ -3,7 +3,7 @@
     <mat-card-title>Select the options bellow</mat-card-title>
     <mat-card-content>
       <mat-selection-list>
-        <mat-list-option *ngFor="let o of options$ | async">{{o}}</mat-list-option>
+        <mat-list-option *ngFor="let o of options$ | async">{{o}}</mat-list-option><!-- 'async' permite transformar dados que vieram do observer para uma array -->
       </mat-selection-list>
     </mat-card-content>
     <mat-card-actions>
@@ -17,7 +17,7 @@
         </ng-template>
 -->      
         <div *ngIf="user$|async as user; else loadinguser2">
-          <p>Name: {{user.name}}</p>
+          <p>Name: {{user.name}}</p><!-- Por meio do user acessa as variáveis de retorno do observer user$-->
           <p>Login: {{user.login}}</p>
         </div>
         <ng-template #loadinguser2>

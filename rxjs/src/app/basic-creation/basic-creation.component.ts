@@ -16,49 +16,51 @@ export class BasicCreationComponent implements OnInit {
   }
 
   observableCreate() {
+    //Cria o observable
     const hello = Observable.create((observer: Observer<string>) => {
       observer.next('Hello');
       observer.next('from');
       observer.next('observable!');
       observer.complete();
     });
-    hello.subscribe(val=> console.log(val));
+    hello.subscribe(val=> console.log(val));//Faz o subscribe que vai printar os dados mandados pelo Observable
   }
 
   fromClick() {
-    from([1,2,3,4,5,{x:10,y:20}])
-      .subscribe((v) => console.log(v));
+    from([1,2,3,4,5,{x:10,y:20}])//O from é capaz de enviar uma sequência de dados (em sequência)(como um observable)
+      .subscribe((v) => console.log(v)); //E já realizado operações com esse envio
     const source = from([1,2,3,4,5,{x:10,y:20}]);
     source.subscribe((v) => console.error(v));
     source.subscribe((v) => console.warn(v));
   }
 
   ofClick() {
-    of([1,2,3,4,5,{x:10,y:20}])
+    of([1,2,3,4,5,{x:10,y:20}]) //Faz a mesma coisa que o from, porém ele irá enviar tudo em um next só (ou seja, enviar a sequência de dados toda de uma vez)
       .subscribe((v) => console.log(v));
   }
 
   intervalClick() {
-    const source = interval(1000);
+    const source = interval(1000);//É um observable que irá realizar um next a cada 1000 milisegundos (nesse caso), é preciso encerrar ele, se não ele fica rodando na memória.
     const subscription = source.subscribe((v) => console.log(v));
     this.subscription.add(subscription);
   }
 
   timerClick() {
-    //const source = timer(1000);
-    const source = timer(3000,1000);
+    //const source = timer(1000);//Vai contar uma vez só e parar
+    const source = timer(3000,1000);//O timer irá esperar os 3 segundo e depois ir mandando next de 1 em 1 segundo
     const subscription = source.subscribe((v) => console.log(v));
     this.subscription.add(subscription);
   }
 
+
   fromEventClick() {
-    const subscription = fromEvent(document,'click')
-      .subscribe((e)=>console.log(e));
+    const subscription = fromEvent(document,'click') //Pega o evento 'click' do document do HTML
+      .subscribe((e)=>console.log(e));//Depois printa esse evento
     this.subscription.add(subscription);      
   }
 
   unsubscribeClick() {
-    this.subscription.unsubscribe();
+    this.subscription.unsubscribe();//Encerrou os subscribers
     this.subscription = new Subscription();
   }
 }

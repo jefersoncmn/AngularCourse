@@ -1,0 +1,50 @@
+<div layout="column" layout-fill>
+    <div align="center" layout="row" layout-align="center center">
+  
+      <mat-card class="info-card mat-elevation-z8" flex="80" style="margin-top: 60px;width: 800px;;">
+  
+        <mat-card-title></mat-card-title>
+        <mat-card-subtitle>
+        </mat-card-subtitle>
+  
+        <mat-card-content fxLayout="column" fxLayoutAlign="stretch" >
+          
+          <form (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="start stretch"  #formClient="ngForm">
+  
+            <div fxFlex="100"  fxLayout="row" fxLayoutAlign="space-between  start">
+              <mat-form-field fxFlex="45" >  
+                <input matInput type="text" autocomplete="off" [(ngModel)]="firstName" name="firstName"
+                  class="form-control" value="" placeholder="First Name" #firstNameField="ngModel"
+                  required minlength="3"><!-- required é um parâmetro do próprio html que permite colocar validadores no componente-->
+                <!-- #firstNameField="ngModel" permite o acesso do componente e acesso aos dados contidos nele -->
+                  <!--  #firstNameField
+                <mat-hint> //Componente útil para apresentar informações da classe do componente
+                  {{ firstNameField.className }}
+                </mat-hint>
+-->                  
+                <mat-hint *ngIf="firstNameField.invalid && (firstNameField.touched || firstNameField.dirty)" class="field-error"><!-- Aqui é pego os dados do componente e validado (valid), se ele foi clicado (touched) e se já escreveram algo nele (dirty)-->
+                  <p>Enter a Valid Name</p>
+                </mat-hint>
+              </mat-form-field> 
+  
+              <mat-form-field fxFlex="45">
+                <input matInput type="text" autocomplete="off"  [(ngModel)]="lastName" name="lastName"
+                  class="form-control" value="" placeholder="Last Name">
+              </mat-form-field>
+  
+            </div>
+  
+            <button mat-button color="primary" [disabled]="!formClient.valid" type="submit" ><!-- "[disabled]="!formClient.valid" irá desabilitar o componente caso no form, algum campo não tenha o preenchimento correto -->
+              <mat-icon>done</mat-icon>Submit
+            </button>
+            
+          </form>
+  
+        </mat-card-content>
+        <mat-card-footer>
+        </mat-card-footer>
+      </mat-card>
+  
+  
+    </div>
+  </div>

@@ -23,7 +23,7 @@ export class DepartmentComponent implements OnInit {
 
   ngOnInit() {
     this.departmentService.get() 
-      .pipe( takeUntil(this.unsubscribe$))
+      .pipe( takeUntil(this.unsubscribe$))//Por meio desse subscribe ele dará unsubcribe no do departments
       .subscribe((deps) => this.departments = deps);
   }
 

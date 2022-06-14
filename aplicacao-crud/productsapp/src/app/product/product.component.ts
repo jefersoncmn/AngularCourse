@@ -37,8 +37,8 @@ export class ProductComponent implements OnInit {
     private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-    this.productService.get()
-      .pipe(takeUntil(this.unsubscribe$))
+    this.productService.get() //Ao instanciar o componente, irá carregar os dados de produtos do backend
+      .pipe(takeUntil(this.unsubscribe$))//Unsubscribe será um intermediário
       .subscribe((prods) => this.products = prods);
     this.departmentService.get()
       .pipe(takeUntil(this.unsubscribe$))

@@ -6,7 +6,7 @@
   <mat-card-content>
     <div fxLayout="column" fxLayoutAlign="space-between">
       <mat-form-field>
-        <input matInput [(ngModel)]="depName" (keyup.enter)="save()">
+        <input matInput [(ngModel)]="depName" (keyup.enter)="save()"><!-- "(keyup.enter)" se pressionar Enter ele chama a função -->
         <mat-hint>The department name</mat-hint>
       </mat-form-field>
       <div fxLayout="row" fxLayoutAlign="end end">

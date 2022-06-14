@@ -1,11 +1,11 @@
 var express = require('express');
-var router = express.Router();
+var router = express.Router();//Para uso de rotas
 var Department = require('./department');
 var Product = require('./product');
 
 router.post('/', function(req, res) {
-   let d = new Department({ name: req.body.name });
-   d.save((err, dep) => {
+   let d = new Department({ name: req.body.name });//Cria o departamento com o nome recebido na request
+   d.save((err, dep) => { //Salva no banco de dados
         if (err)
             res.status(500).send(err);
         else
@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
 })
 
 router.get('/', function(req, res) {
-    Department.find().exec((err, deps) => {
+    Department.find().exec((err, deps) => { //Retorna todos departamentos cadastrados pro cliente
          if (err)
              res.status(500).send(err);
          else
@@ -33,7 +33,7 @@ router.delete('/:id', async (req, res) => {
         }
         else {
             await Department.deleteOne({_id: id});
-            res.status(200).send({});
+            res.status(200).send({});//O send({}) envia um JSON vazio
         }
     }
     catch(err) {
@@ -45,7 +45,7 @@ router.patch('/:id', (req, res) => {
     Department.findById(req.params.id, (err, dep) => {
         if (err)
             res.status(500).send(err);
-        else if (!dep)
+        else if (!dep) //se não encontrou o dep
             res.status(404).send({});
         else {
             dep.name = req.body.name;
